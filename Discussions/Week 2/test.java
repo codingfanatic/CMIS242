@@ -1,9 +1,9 @@
 public class test{
     public static void main(String[] args){
-        Person rick = new Person("Richyad", 58);
+        Fighter rick = new Fighter("Richyad", 58, 206.8, "Wing Chun", "1-2");
         Person tick = new Person("Nope", 3);;
 
-        rick.display();
+        System.out.println(rick.getName());
 
     }
 }

@@ -4,6 +4,8 @@ class Person{
     private static int idCount = 0;
     
     public Person(){
+        name = "";
+        id = 0;
     }
 
     public Person(String name, int id){

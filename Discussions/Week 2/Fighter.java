@@ -4,6 +4,12 @@ class Fighter extends Person{
     private String record;
     private static int fighterCount = 0;
 
+    public Fighter(){
+        super();
+        weight = 0;
+        style = "";
+        record = "";
+    }
     public Fighter(String name, int id, double weight, String style, String record){
         super(name, id);
         this.weight = weight;
@@ -11,13 +17,6 @@ class Fighter extends Person{
         this.record = record;
     }
     
-    public String getName(){
-        super.getName();
-    }
-
-    public int getId(){
-        super.getId();
-    }
     //getWeight
     //getStyle
     //getRecord
