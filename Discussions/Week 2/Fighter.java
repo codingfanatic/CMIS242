@@ -10,6 +10,7 @@ class Fighter extends Person{
         style = "";
         record = "";
     }
+
     public Fighter(String name, int id, double weight, String style, String record){
         super(name, id);
         this.weight = weight;
@@ -17,11 +18,22 @@ class Fighter extends Person{
         this.record = record;
     }
     
-    //getWeight
-    //getStyle
-    //getRecord
-    //toString
+    public double getWeight(){
+        return this.weight;
+    }
+
+    public String getStyle(){
+        return this.style;
+    }
     
+    public String getRecord(){
+        return this.record;
+    }
+    @Override
+    public String toString(){
+        return super.toString() + "\n\tWeight: " + this.weight + "\n\tStyle: " + this.style
+            + "\n\tRecord: " + this.record;
+    }
 
     //Fighter will override toString() using super 
     //and return vals of instance vars with proper labels
