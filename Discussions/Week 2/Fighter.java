@@ -29,15 +29,16 @@ class Fighter extends Person{
     public String getRecord(){
         return this.record;
     }
+    
     @Override
     public String toString(){
         return super.toString() + "\n\tWeight: " + this.weight + "\n\tStyle: " + this.style
             + "\n\tRecord: " + this.record;
     }
 
-    //Fighter will override toString() using super 
-    //and return vals of instance vars with proper labels
-
-    //display 
+    @Override
+    public void display(){
+        System.out.println("<<<Fighter>>>" + this);
+    } 
 
    }
