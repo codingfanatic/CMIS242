@@ -1,7 +1,19 @@
 class Person{
     private String name, id;
     private static int idCount = 0;
-    //Person has a display(), and toString()
-    //All instance vars in Person should be private
-    //Person will return vals of instancs vars with proper labels as well as the vals of inherited instance vars using toString()
+    
+    public void display(){
+        System.out.println("<<<Person>>>" + this.toString());
+    }
+    public String getName(){
+        return this.name;
+    }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public String toString(){
+        return this.toString();
+    }
    }
