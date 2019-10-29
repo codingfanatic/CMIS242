@@ -3,17 +3,21 @@ class Person{
     private int id;
     private static int idCount = 0;
     
-    //Add a constructor which accepts name and id and increments idCount
+    public Person(){
+
+    }
+
     public Person(String name, int id){
         this.name = name;
         this.id= id;
         ++idCount;
     }
-    //Display method should have the format <<Obj>>>
-    //Only print the object, not Object.toString()
+    
     public void display(){
-        System.out.println("<<<Person>>>" + this.toString());
+        System.out.println("<<Person>>>" + this);
+        //this keyword invokes the instance toString() method
     }
+
     public String getName(){
         return this.name;
     }
@@ -22,9 +26,7 @@ class Person{
         return this.id;
     }
 
-    //Include specific String formatting
-    //"\n\tId: " + id + name;
     public String toString(){
-        return this.toString();
+        return "\n\tId: " + id + "\n\tName: " + name;
     }
    }
