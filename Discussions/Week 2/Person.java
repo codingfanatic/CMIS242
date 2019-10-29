@@ -4,7 +4,6 @@ class Person{
     private static int idCount = 0;
     
     public Person(){
-
     }
 
     public Person(String name, int id){
@@ -13,11 +12,6 @@ class Person{
         ++idCount;
     }
     
-    public void display(){
-        System.out.println("<<Person>>>" + this);
-        //this keyword invokes the instance toString() method
-    }
-
     public String getName(){
         return this.name;
     }
@@ -29,4 +23,10 @@ class Person{
     public String toString(){
         return "\n\tId: " + id + "\n\tName: " + name;
     }
+
+    public void display(){
+        System.out.println("<<Person>>>" + this);
+        //this keyword invokes the instance toString() method
+    }
+
    }

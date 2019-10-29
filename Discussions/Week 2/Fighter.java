@@ -1,5 +1,32 @@
 class Fighter extends Person{
-    //Fighter has a weight class, fighting style, and a record
-    //Fighter constructor must invoke Person's constructor
-    //Fighter will override toString() using super and return vals of instance bars with proper labels
+    private double weight;
+    private String style;
+    private String record;
+    private static int fighterCount = 0;
+
+    public Fighter(String name, int id, double weight, String style, String record){
+        super(name, id);
+        this.weight = weight;
+        this.style = style;
+        this.record = record;
+    }
+    
+    public String getName(){
+        super.getName();
+    }
+
+    public int getId(){
+        super.getId();
+    }
+    //getWeight
+    //getStyle
+    //getRecord
+    //toString
+    
+
+    //Fighter will override toString() using super 
+    //and return vals of instance vars with proper labels
+
+    //display 
+
    }
