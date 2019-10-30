@@ -9,6 +9,7 @@ class Fighter extends Person{
         weight = 0;
         style = "";
         record = "";
+        ++fighterCount;
     }
 
     public Fighter(String name, int id, double weight, String style, String record){
@@ -16,6 +17,7 @@ class Fighter extends Person{
         this.weight = weight;
         this.style = style;
         this.record = record;
+        ++fighterCount;
     }
     
     public double getWeight(){
@@ -40,5 +42,4 @@ class Fighter extends Person{
     public void display(){
         System.out.println("<<<Fighter>>>" + this);
     } 
-
-   }
+}

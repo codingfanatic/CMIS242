@@ -6,6 +6,7 @@ class Person{
     public Person(){
         name = "";
         id = 0;
+        ++idCount;
     }
 
     public Person(String name, int id){
@@ -28,7 +29,6 @@ class Person{
 
     public void display(){
         System.out.println("<<Person>>>" + this);
-        //this keyword invokes the instance toString() method
     }
 
    }
