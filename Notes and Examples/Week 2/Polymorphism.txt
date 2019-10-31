@@ -1,0 +1,9 @@
+Polymorphism
+See fig 2-5, and the TestPolymorphism class for more details
+
+-One method call may invoke different overridden methods depending upon the actual type 
+ of the object calling the method
+--Notice that at run time, the overridden methods are resolved depending on 
+  the type of the object, not the type of the reference.
+
+See fig 2-5, and the TestPolymorphism class for more details

@@ -1,0 +1,40 @@
+Inheritance
+See figure 2.3, and the Name, Employee, and Person classes for more details.
+
+-One class uses the properties and methods of another while adding its own properties and methods.
+-Subclass and Superclass
+--Subclass only needs to add differences from the Superclass
+
+ -Composition
+ --A Car has a Gear
+
+ -Specialization
+ --A Car is a Vehicle
+
+ class subClassName extends superClassName {
+  //…
+}
+ -All classes without the extend keyword implicilty extend the Object class
+
+-Subclass can invoke Superclass methods using super.methodName() 
+-Subclass must include Superclass constructor as the first line in a method (if invoking super())
+
+-extend—A subclass can add entirely new data and behavior by declaring additional instance variables and methods.
+-replace—A subclass can change existing behavior by overriding methods. 
+-refine—A subclass can use existing behavior by first calling the corresponding method in the superclass to copy its 
+ behavior, then refine it by adding additional behavior.
+
+
+A Person has a Name, so these two classes have a composition relationship—the Person class has a name variable of type Name.
+A Student is a Person, so these two classes have a specialization relationship—Student inherits Person.
+An Employee is a Person, so these two classes have a specialization relationship—Employee inherits Person.
+
+-The Employee class that extends the Person class by adding the salary instance variable 
+ and a method related to salary raise. It also overrides the toString() and display() methods 
+ of the Person class. So, the Employee subclass implements the following specialization relationship using inheritance:
+ --An Employee is a Person
+
+-A protected instance variable can be accessed by any method in any derived class or by any method in 
+ the same package, but no others. Prevents issues which may be caused by hiding information in parent classes.
+
+See figure 2.3, and the Name, Employee, and Person classes for more details.
