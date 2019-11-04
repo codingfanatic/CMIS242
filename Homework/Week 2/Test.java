@@ -25,7 +25,6 @@
 
 4. Once all the employee data is read in, a report should be displayed on the 
     console for each of the two years. 
-
     Each line of the report should contain all original data supplied for each employee together with 
     that employee's annual salary for the year. 
 
@@ -51,6 +50,10 @@ public class Test{
         List<Employee> array2014 = new ArrayList<Employee>();
         List<Employee> array2015 = new ArrayList<Employee>();
 
+        String reportString2014 = "";
+        Double averageSalary2014 = 0.0;
+        String reportString2015 = "";
+        Double averageSalary2015 = 0.0;
         String year = "";
         String employeeType = "";
         String employeeName = "";
@@ -79,6 +82,12 @@ public class Test{
                 // Read one Line using BufferedReader
                 while ((fileLine = inputStream.readLine()) != null) {
                     year = getInfo(fileLine);
+
+                        if (year.equals("2014"))
+                            reportString2014 = reportString2014.concat(fileLine + " - Annual Salary :$");
+                        else
+                            reportString2015 = reportString2015.concat(fileLine + " - Annual Salary :$");
+                    
                     fileLine = updateFileLine(fileLine, year);
 
                     employeeType = getInfo(fileLine);
@@ -108,12 +117,28 @@ public class Test{
                             e = new Executive(employeeName, employeeMonthlySalary, employeeExtraInfo);
                         }
                         
-                        if (year.equals("2014"))
-                            array2014.add(array2014.size(),e);        
-                        else if (year.equals("2015"))
+                        if (year.equals("2014")){
+                            array2014.add(array2014.size(),e);  
+                            reportString2014 = reportString2014.concat(e.annualSalary() + "\n"); 
+                            averageSalary2014 += e.annualSalary();
+                            averageSalary2014 /= array2014.size();
+                        }  
+                        else if (year.equals("2015")){
                             array2015.add(array2015.size(), e);
+                            reportString2015 = reportString2015.concat(e.annualSalary() + "\n");
+                            averageSalary2015 += e.annualSalary();
+                            averageSalary2014 /= array2014.size();
+                        }
 
                 }
+/*
+4. Once all the employee data is read in, a report should be displayed on the 
+   console for each of the two years. 
+   Each line of the report should contain all original data supplied for each employee together with 
+   that employee's annual salary for the year. 
+*/
+                System.out.println("<<<2014>>>\n" + reportString2014 + "Average Salary = $" + averageSalary2014);
+                System.out.println("<<<2015>>>\n" + reportString2015 + "Average Salary = $" + averageSalary2015);
             } 
             
             catch (IOException io) {
@@ -134,9 +159,6 @@ public class Test{
                 }
        
             }       
-
-            System.out.println(report(array2014));
-            System.out.println(report(array2015));
     }
 
     //Update fileLine String by removing Employee information
@@ -160,12 +182,5 @@ public class Test{
 
     public static double getEmployeeExtraInfo(String fileLine){
         return Double.parseDouble(fileLine);
-    }
-/*
-4. Once all the employee data is read in, a report should be displayed on the 
-console for each of the two years. 
-*/
-    public static String report(List arrayList){
-        return "";
     }
 }
