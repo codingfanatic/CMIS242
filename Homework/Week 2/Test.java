@@ -20,12 +20,12 @@
 2.  As the employees are read in, Employee objects of the appropriate type should be created 
     and they should be stored in one of two arrays depending upon the year. 
     
-    You may assume that the file will contain no more than ten employee records for each year 
+3. You may assume that the file will contain no more than ten employee records for each year 
     and that the data in the file will be formatted correctly.
 
-    Once all the employee data is read in, a report should be displayed on the 
+4. Once all the employee data is read in, a report should be displayed on the 
     console for each of the two years. 
-    
+
     Each line of the report should contain all original data supplied for each employee together with 
     that employee's annual salary for the year. 
 
@@ -33,21 +33,30 @@
     should be computed and displayed.
 */
 import java.util.ArrayList;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.Double;
 
 public class Test{
     public static void main(String[] args){
 
-        ArrayList array2014 = new ArrayList();
-        ArrayList array2015 = new ArrayList();
+/*
+3. You may assume that the file will contain no more than ten employee 
+   records for each year.
+   The ArrayList() constructor instantiates an empty list with an 
+   inital capacity of ten.
+*/
+        List<Employee> array2014 = new ArrayList<Employee>();
+        List<Employee> array2015 = new ArrayList<Employee>();
 
         String year = "";
         String employeeType = "";
         String employeeName = "";
-        String employeeMonthlySalary = "";
-        String employeeExtraInfo = "";
+
+        double employeeMonthlySalary = 0.00;
+        double employeeExtraInfo = 0.00;
 
         Employee e;
 /*
@@ -67,64 +76,96 @@ public class Test{
             try {
                 inputStream = new BufferedReader(new FileReader("Info.txt"));
 
-                System.out.println("Employees: "); int i = 1;
                 // Read one Line using BufferedReader
                 while ((fileLine = inputStream.readLine()) != null) {
-                    year = fileLine.substring(0, fileLine.indexOf(" "));
-                    
-                    fileLine = fileLine.substring(year.length() + 1, fileLine.length());
-                    employeeType = fileLine.substring(0, fileLine.indexOf(" "));
-                    
-                    fileLine = fileLine.substring(employeeType.length() + 1, fileLine.length());
-                    employeeName = fileLine.substring(0, fileLine.indexOf(" "));
+                    year = getInfo(fileLine);
+                    fileLine = updateFileLine(fileLine, year);
 
-                    fileLine = fileLine.substring(employeeName.length() + 1, fileLine.length());
-                
-                        if (!fileLine.contains(" "))
-                         employeeMonthlySalary = fileLine.substring(0, fileLine.length());
-                      else
-                         employeeMonthlySalary = fileLine.substring(0, fileLine.indexOf(" "));
+                    employeeType = getInfo(fileLine);
+                    fileLine = updateFileLine(fileLine, employeeType);
                     
-                    employeeExtraInfo = "";
+                    employeeName = getInfo(fileLine);
+                    fileLine = updateFileLine(fileLine, employeeName);
 
+                    employeeMonthlySalary = getEmployeeMonthlySalary(fileLine);
+                        
                         if (!(employeeType.equals("Employee"))){
-                            fileLine = fileLine.substring(employeeMonthlySalary.length() + 1, fileLine.length());
-                            employeeExtraInfo = fileLine.substring(0, fileLine.length());
+                            employeeExtraInfo = getEmployeeExtraInfo(
+                                                    fileLine.substring(
+                                                        fileLine.indexOf(" "), fileLine.length()));
                         }
 /*
 2.  As the employees are read in, Employee objects of the appropriate type should be created 
     and they should be stored in one of two arrays depending upon the year. 
-*/                  
-                            if (employeeType.equals("Employee")){
-                                e = new Employee(employeeName, employeeMonthlySalary);
-                            }
-                            /*
-                           //else if (/*Salesman*/
-                                //Instantiate Salesman
-                          //  }
-                          //  else{
-                                //Instantiate Executive
-                         //   }
+*/           
+                        if (employeeType.equals("Employee")){
+                            e = new Employee(employeeName, employeeMonthlySalary);
+                        }
+                        else if (employeeType.equals("Salesman")){
+                            e = new Salesman(employeeName, employeeMonthlySalary, employeeExtraInfo);
+                        }
+                        else{
+                            e = new Executive(employeeName, employeeMonthlySalary, employeeExtraInfo);
+                        }
                         
-                          //  if (year.equals("2014"))
-                                //Add to 2014 array
-                         //   else
-                                //Add to 2015 array
-                                
-                    System.out.println(employeeExtraInfo);
+                        if (year.equals("2014"))
+                            array2014.add(array2014.size(),e);        
+                        else if (year.equals("2015"))
+                            array2015.add(array2015.size(), e);
+
                 }
-            } catch (IOException io) {
+            } 
+            
+            catch (IOException io) {
                 System.out.println("File IO exception" + io.getMessage());
-            }finally {
+            }
+            
+            finally {
                 // Need another catch for closing 
                 // the streams          
                 try {               
                     if (inputStream != null) {
                     inputStream.close();
-                }                
-                } catch (IOException io) {
+                    }                
+                } 
+                
+                catch (IOException io) {
                     System.out.println("Issue closing the Files" + io.getMessage());
                 }
        
-    }}
+            }       
+
+            System.out.println(report(array2014));
+            System.out.println(report(array2015));
+    }
+
+    //Update fileLine String by removing Employee information
+    public static String updateFileLine(String fileLine, String data){
+        return fileLine.substring(data.length() + 1, fileLine.length());
+    }
+    public static String getInfo(String fileLine){
+        return fileLine.substring(0, fileLine.indexOf(" "));
+    }
+
+    public static double getEmployeeMonthlySalary(String fileLine){
+
+        if (!fileLine.contains(" ")){
+            return Double.parseDouble(fileLine);
+        }             
+        else {
+            return Double.parseDouble(
+                   fileLine.substring(0, fileLine.indexOf(" ")));
+        }
+    }
+
+    public static double getEmployeeExtraInfo(String fileLine){
+        return Double.parseDouble(fileLine);
+    }
+/*
+4. Once all the employee data is read in, a report should be displayed on the 
+console for each of the two years. 
+*/
+    public static String report(List arrayList){
+        return "";
+    }
 }
