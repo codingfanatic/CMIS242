@@ -47,7 +47,7 @@ class Salesman extends Employee{
 
     @Override
     public double annualSalary(){
-        double commission = (.02 * super.annualSalary());
+        double commission = (.02 * annualSales);
 /*
 4. The maximum commission a salesman can earn is $20,000.        
 */      
@@ -63,8 +63,7 @@ class Salesman extends Employee{
     name, monthly salary and annual sales, appropriately labeled.
 */
     public String toString(){
-        return "\n\tName: " + name + 
-               "\n\tMonthly Salary: $" + monthlySalary +
+        return super.toString() +
                "\n\tAnnual Sales: $" + annualSales;
 //*****************SET PRECISION TO TWO DECIMAL PLACES */
     }

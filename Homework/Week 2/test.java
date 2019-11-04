@@ -1,6 +1,6 @@
 public class test{
     public static void main(String[] args){
-        Employee r = new Employee("Richard C", 2500.25);
+        Executive r = new Executive("Richard C", 2500.25, 51);
         System.out.println(r.annualSalary());
         System.out.println(r.toString());
         

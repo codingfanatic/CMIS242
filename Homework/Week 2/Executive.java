@@ -1,63 +1,62 @@
 /*
-    It has an additional instance variable that reflects the current stock price. 
-    It should have the same three methods:
-    A constructor that allows the name, monthly salary and stock price to be initialized.
-    An overridden method annualSalary that returns the salary for a whole year. 
-        The salary for an executive consists of the base salary computed from the monthly salary plus a bonus. 
-        The bonus is $30,000 if the current stock price is greater than $50 and nothing otherwise.
-    An overridden toString method that returns a string containing the name, monthly salary and
-        stock price, appropriately labeled.
+1. It has an additional instance variable that reflects the current stock price. 
+
+2. A constructor that allows the name, monthly salary and stock price to be initialized.
+   
+3. An overridden method annualSalary that returns the salary for a whole year. 
+   The salary for an executive consists of the base salary computed from the monthly salary 
+   plus a bonus. 
+   The bonus is $30,000 if the current stock price is greater than $50 and nothing otherwise.
+
+4. An overridden toString method that returns a string containing the name, monthly salary and
+   stock price, appropriately labeled.
 */
 
+class Executive extends Employee{
 /*
-1. It has an additional instance variable that contains the annual sales 
-   in whole dollars for that salesman. 
+1. It has an additional instance variable that reflects the current stock price. 
 */
-class Salesman extends Employee{
     private String name;
-    private double monthlySalary, annualSales;
+    private double monthlySalary, currentStockPrice;
 
-    public Salesman(){
+    public Executive(){
         super();
-        annualSales = 0.00;
+        currentStockPrice = 0.00;
     }
 
 /*
-2. A constructor that allows the name, monthly salary and annual sales to be initialized.
-*/    
-    public Salesman(String name, double monthlySalary, double annualSales){
+2. A constructor that allows the name, monthly salary and stock price to be initialized.
+*/
+    public Executive(String name, double monthlySalary, double currentStockPrice){
         super(name, monthlySalary);
-        this.annualSales = annualSales;
+        this.currentStockPrice = currentStockPrice;
     }
 
 /*
 3. An overridden method annualSalary that returns the salary for a whole year. 
-   The salary for a salesman consists of the base salary computed from the 
-   monthly salary plus a commission. 
-   The commission is computed as 2% of that salesman's annual sales. 
+   The salary for an executive consists of the base salary computed from the monthly salary 
+   plus a bonus. 
+   The bonus is $30,000 if the current stock price is greater than $50 and nothing otherwise.   
 */
-
-    @Override
+   @Override
     public double annualSalary(){
-        double commission = (.02 * super.annualSalary());
-/*
-4. The maximum commission a salesman can earn is $20,000.        
-*/      
-        if (commission > 20000){
-            commission = 20000;
-        }
+        double bonus = 0.00;
 
-        return (super.annualSalary() + commission);
+            if(currentStockPrice > 50){
+                bonus = 30000;
+            }
+
+        return (super.annualSalary() + bonus);
 //*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
+ 
 /*
-5. An overridden toString method that returns a string containing the 
-    name, monthly salary and annual sales, appropriately labeled.
+4. An overridden toString method that returns a string containing the name, monthly salary and
+    stock price, appropriately labeled.
 */
     public String toString(){
-        return "\n\tName: " + name + 
-               "\n\tMonthly Salary: $" + monthlySalary +
-               "\n\tAnnual Sales: $" + annualSales;
+        return super.toString() +
+               "\n\tStock Price: $" + currentStockPrice;
 //*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
 }
