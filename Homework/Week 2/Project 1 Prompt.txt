@@ -1,6 +1,9 @@
 The first programming project involves writing a program that computes the salaries for a collection of
 employees of different types. This program consists of four classes.
 
+//EMPLOYEE CLASS*****************SET PRECISION TO TWO DECIMAL PLACES */
+//Salesman CLASS*****************SET PRECISION TO TWO DECIMAL PLACES */
+//TEST CLASS*************************Convert Strings to double where needed
 The first class is the Employee class, 
     which contains the employee's name 
     and monthly salary, which
