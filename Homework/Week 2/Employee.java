@@ -30,13 +30,11 @@ class Employee{
  //12 * monthly salary    
     public double annualSalary(){
         return 12 * monthlySalary;
-//*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
  
  //A toString method that returns a string containing the name and monthly salary, appropriately labeled.
     public String toString(){
         return "\n\tName: " + name + 
                "\n\tMonthly Salary: $" + monthlySalary;
-//*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
 }

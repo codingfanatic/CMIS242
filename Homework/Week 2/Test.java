@@ -132,6 +132,7 @@ public class Test{
 
                 }
 /*
+*************SET PRECISION
 4. Once all the employee data is read in, a report should be displayed on the 
    console for each of the two years. 
    Each line of the report should contain all original data supplied for each employee together with 

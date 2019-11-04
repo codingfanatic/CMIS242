@@ -56,7 +56,6 @@ class Salesman extends Employee{
         }
 
         return (super.annualSalary() + commission);
-//*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
 /*
 5. An overridden toString method that returns a string containing the 
@@ -65,6 +64,5 @@ class Salesman extends Employee{
     public String toString(){
         return super.toString() +
                "\n\tAnnual Sales: $" + annualSales;
-//*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
 }

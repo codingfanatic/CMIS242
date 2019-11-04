@@ -47,7 +47,6 @@ class Executive extends Employee{
             }
 
         return (super.annualSalary() + bonus);
-//*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
  
 /*
@@ -57,6 +56,5 @@ class Executive extends Employee{
     public String toString(){
         return super.toString() +
                "\n\tStock Price: $" + currentStockPrice;
-//*****************SET PRECISION TO TWO DECIMAL PLACES */
     }
 }
