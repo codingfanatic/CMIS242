@@ -26,6 +26,9 @@ class ButtonPanel extends JPanel {
         String firstName = snPanel.ioPanel.getFirstName();
         String middleName = snPanel.ioPanel.getMiddleName();
         String lastName = snPanel.ioPanel.getLastName();
-        snPanel.ioPanel.setFullName(fullName.combineNames(firstName, lastName, middleName));
+        //Set the full name in the Full Name field using the combineNames method
+        //In the Formattable class
+        snPanel.ioPanel.setFullName(
+            fullName.combineNames(firstName, middleName, lastName));
     }
 }

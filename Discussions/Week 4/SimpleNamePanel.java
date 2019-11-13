@@ -1,11 +1,11 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
+import javax.swing.*;
 
 //The Panel for combining the IOPanel and Buttons Panel
-public class SimpleNamePanel extends JPanel {
+class SimpleNamePanel extends JPanel {
     //Instantiate the IOPanel and Buttons Panel
     public IOPanel ioPanel = new IOPanel(this);
-    public ButtonsPanel btnPanel = new ButtonsPanel(this);
+    public ButtonPanel btnPanel = new ButtonPanel(this);
 
     public SimpleNamePanel(){
         setLayout(new BorderLayout());
