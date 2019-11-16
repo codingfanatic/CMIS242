@@ -1,8 +1,12 @@
 public class TestAccount{
     private double balance;
 
-    TestAccount(double balance){
-        this.balance = balance;
+    TestAccount(){
+        this.balance = 5000;
+    }
+
+    public String getBalance(){
+        return String.valueOf(this.balance);
     }
 
     public void display(){
