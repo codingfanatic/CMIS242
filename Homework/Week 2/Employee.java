@@ -1,4 +1,10 @@
-/*
+/* 
+Employee.java
+Richard Clarke
+11-03-19
+A class used to instantiate Employee objects using names and monthly salaries
+
+
 1. The first class is the Employee class, 
 2. The class contains the employee's name and monthly salary, which
     is specified in whole dollars. 

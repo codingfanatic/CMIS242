@@ -1,4 +1,10 @@
-/*
+/* 
+Executive.java
+Richard Clarke
+11-03-19
+A class used to instantiate Salesman objects using names, monthly salaries, and annual sales.
+This class extends the Employee class.
+
 The first is Salesman. 
 1. It has an additional instance variable that contains the annual sales in whole dollars 
 for that salesman. 

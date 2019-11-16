@@ -1,9 +1,22 @@
 The first programming project involves writing a program that computes the salaries for a collection of
 employees of different types. This program consists of four classes.
 
-//EMPLOYEE CLASS*****************SET PRECISION TO TWO DECIMAL PLACES */
-//Salesman CLASS*****************SET PRECISION TO TWO DECIMAL PLACES */
-//TEST CLASS*************************Convert Strings to double where needed
+
+ Declare all instance variables private
+
+Submission requirements
+    Deliverables include all Java files (.java) 
+    and a single word (or PDF) document. 
+    The Java files should be named appropriately for your applications. 
+    The word (or PDF) document should include screen captures
+        showing the successful compiling and running of each of the test cases. 
+    Each screen capture should be properly labeled clearly indicated what the screen capture represents. 
+    The test cases table should be included in your word or PDF document and properly labeled as well.
+
+Submit your files to the Project 1 assignment area no later than the due date listed in your LEO classroom.
+You should include your name and P1 in your word (or PDF) file submitted 
+(e.g. firstnamelastnameP1.docx or firstnamelastnameP1.pdf)
+
 The first class is the Employee class, 
     which contains the employee's name 
     and monthly salary, which

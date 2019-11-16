@@ -1,4 +1,10 @@
 /*
+Test.java
+Richard Clarke
+11-03-19
+A class used to test the Employee, Executive, and Salesman classes for accuracy in their instances
+
+
 1. Finally there should be a fourth class that contains the main method. 
     It should read in employee information from a text file. 
     Each line of the text file will represent the information for one employee
@@ -83,6 +89,7 @@ public class Test{
                 while ((fileLine = inputStream.readLine()) != null) {
                     year = getInfo(fileLine);
 
+                        //Append Employee information to the report prior to instantiating objects
                         if (year.equals("2014"))
                             reportString2014 = reportString2014.concat(fileLine + " - Annual Salary :$");
                         else
@@ -127,7 +134,7 @@ public class Test{
                             array2015.add(array2015.size(), e);
                             reportString2015 = reportString2015.concat(e.annualSalary() + "\n");
                             averageSalary2015 += e.annualSalary();
-                            averageSalary2014 /= array2014.size();
+                            averageSalary2015 /= array2014.size();
                         }
 
                 }
@@ -138,8 +145,8 @@ public class Test{
    Each line of the report should contain all original data supplied for each employee together with 
    that employee's annual salary for the year. 
 */
-                System.out.println("<<<2014>>>\n" + reportString2014 + "Average Salary = $" + averageSalary2014);
-                System.out.println("<<<2015>>>\n" + reportString2015 + "Average Salary = $" + averageSalary2015);
+                System.out.printf("<<<2014>>>\n" + reportString2014 + "Average Employee Salary = $%.2f\n", averageSalary2014);
+                System.out.printf("<<<2015>>>\n" + reportString2015 + "Average Employee Salary = $%.2f\n", averageSalary2015);
             } 
             
             catch (IOException io) {
@@ -162,14 +169,17 @@ public class Test{
             }       
     }
 
-    //Update fileLine String by removing Employee information
+    //Update fileLine String by removing Employee information after extracting key information
     public static String updateFileLine(String fileLine, String data){
         return fileLine.substring(data.length() + 1, fileLine.length());
     }
+
+    //Obtain key information for Employees (Year, Employee type, name, etc) 
     public static String getInfo(String fileLine){
         return fileLine.substring(0, fileLine.indexOf(" "));
     }
 
+    //Obtain the Employee's monthly salary
     public static double getEmployeeMonthlySalary(String fileLine){
 
         if (!fileLine.contains(" ")){
@@ -181,6 +191,7 @@ public class Test{
         }
     }
 
+    //Obtain Employee extra information (stock price for Execs and annual sales for Salesmen)
     public static double getEmployeeExtraInfo(String fileLine){
         return Double.parseDouble(fileLine);
     }

@@ -1,4 +1,10 @@
-/*
+/* 
+Executive.java
+Richard Clarke
+11-03-19
+A class used to instantiate Executive objects using names, monthly salaries, and stock prices.
+This class extends the Employee class.
+
 1. It has an additional instance variable that reflects the current stock price. 
 
 2. A constructor that allows the name, monthly salary and stock price to be initialized.
