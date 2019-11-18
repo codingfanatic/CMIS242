@@ -17,7 +17,7 @@ class GameCube implements NintendoConsole{
 
     @Override
     public void setNumberOfControllers(int i){
-        this.numberOfControllers = 4;
+        this.numberOfControllers = i;
     }
 
     @Override
