@@ -24,4 +24,11 @@ class GameCube implements NintendoConsole{
     public void setDeviceName(String s){
         this.deviceName = s;
     }
+
+    public boolean hasOnline(){
+        if(this.deviceName.contains("2001"))
+            return true;
+        else
+            return false;
+    }
 }
