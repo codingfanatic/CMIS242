@@ -35,7 +35,7 @@ class TestNames{
         String fourth = array.getName(3);
         System.out.println(fourth);
 
-        array.add(4.12);
+        array.add(Double.valueOf(4.12));
         String fifth = array.getName(4);
         System.out.println(fifth);
     }
