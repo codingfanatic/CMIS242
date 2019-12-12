@@ -23,18 +23,17 @@ class TestNamesNG{
         array.add(new String("Boruto"));
         array.add(new String("Ikki"));
         array.add(new String("Jiraiya"));
-        array.add(valueOf(4.12)); //
+        array.add(Double.valueOf(4.12));
 
         String first = (String) array.getName(0);
-        String second = (String) array.getName(1);
-        String third = (String) array.getName(2);
-        String fourth = (String) array.getName(3);
-        String fifth = (String) array.getName(4);
-
         System.out.println(first);
+        String second = (String) array.getName(1);
         System.out.println(second);
+        String third = (String) array.getName(2);
         System.out.println(third);
+        String fourth = (String) array.getName(3);
         System.out.println(fourth);
+        String fifth = (String) array.getName(4);
         System.out.println(fifth);
     }
 }

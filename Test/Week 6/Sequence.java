@@ -1,4 +1,9 @@
 /*
+Sequence.java
+Richard Clarke
+12-01-19
+A class used to calculate elements in a sequence and the number of iterations
+
 All its methods must be class (static) methods and no objects should be
 able to be generated for that class. It should contain three public methods 
 (AND a static int which increments on either the iteration loop or each recursion method call
