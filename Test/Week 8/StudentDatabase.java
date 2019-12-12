@@ -54,9 +54,10 @@ class DatabasePanel extends JPanel {
     //public RadioButtonPanel rbPanel = new RadioButtonPanel(this);
 
     public DatabasePanel(){
+        setLayout(new FlowLayout());
         setBackground(Color.lightGray);
         //add(btnPanel, BorderLayout.PAGE_START);
-        add(iPanel, GroupLayout.DEFAULT_SIZE);
+        add(iPanel, FlowLayout.LEFT);
         //add(rbPanel, BorderLayout.EAST);
     }
 }
@@ -76,9 +77,9 @@ class InfoPanel extends JPanel {
     private JLabel nameLbl = new JLabel("Name:", JLabel.LEFT);
     private JLabel majorLbl = new JLabel("Major:", JLabel.LEFT);
     //TextFields
-    private JTextField idText = new JTextField("");
-    private JTextField nameText = new JTextField("");
-    private JTextField majorText = new JTextField("");
+    private JTextField idText = new JTextField(20);
+    private JTextField nameText = new JTextField(20);
+    private JTextField majorText = new JTextField(20);
 
     //Might get rid of these
     //private GoodFrame frame = new GoodFrame();
@@ -116,32 +117,29 @@ class InfoPanel extends JPanel {
         //#-#
         layout.setHorizontalGroup(
             layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(iPanel)
-                    .addComponent(lPanel)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                    .addComponent(idLbl)
+                    .addComponent(nameLbl)
                 )
-                .addComponent(jPanel)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(kPanel)
-                    .addComponent(mPanel)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                    .addComponent(idText)
+                    .addComponent(nameText)
                 )
+
         );
 
         layout.setVerticalGroup(
             layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                .addComponent(iPanel)
-                .addComponent(jPanel)
-                .addComponent(kPanel)
+                .addComponent(idLbl)
+                .addComponent(idText)
             )
             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                .addComponent(lPanel)
-                .addComponent(mPanel)
+                .addComponent(nameLbl)
+                .addComponent(nameText)
             )
-        );
 
-       add(idLbl);
-       add(idText);
+        );
     }			
     
     //Return the amount entered by the user
