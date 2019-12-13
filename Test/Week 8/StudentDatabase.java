@@ -71,15 +71,19 @@ class DatabasePanel extends JPanel {
 //Info Panel class
 //////////////////////////////////////////
 class InfoPanel extends JPanel { 
-    //DatabasePanel and JLabel objects
+    //DatabasePanel, JLabel objects and JComboBox
     private DatabasePanel dbPanel;
     private JLabel idLbl = new JLabel("Id:", JLabel.LEFT);
     private JLabel nameLbl = new JLabel("Name:", JLabel.LEFT);
     private JLabel majorLbl = new JLabel("Major:", JLabel.LEFT);
-    //TextFields
+    private JLabel selectLbl = new JLabel("Choose Selection:", JLabel.LEFT);
+    //TextFields, JCombobox
     private JTextField idText = new JTextField(20);
     private JTextField nameText = new JTextField(20);
     private JTextField majorText = new JTextField(20);
+
+    private String options[] = {"Insert", "Delete", "Find", "Update"};
+    private JComboBox selectBox = new JComboBox(options);
 
     //Might get rid of these
     //private GoodFrame frame = new GoodFrame();
@@ -120,10 +124,14 @@ class InfoPanel extends JPanel {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                     .addComponent(idLbl)
                     .addComponent(nameLbl)
+                    .addComponent(majorLbl)
+                    .addComponent(selectLbl)
                 )
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                     .addComponent(idText)
                     .addComponent(nameText)
+                    .addComponent(majorText)
+                    .addComponent(selectBox)
                 )
 
         );
@@ -138,6 +146,16 @@ class InfoPanel extends JPanel {
                 .addComponent(nameLbl)
                 .addComponent(nameText)
             )
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(majorLbl)
+                .addComponent(majorText)
+            )
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+            .addComponent(selectLbl)
+            .addComponent(selectBox)
+        )
+        
+        
 
         );
     }			
