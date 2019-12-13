@@ -71,13 +71,15 @@ class DatabasePanel extends JPanel {
 //Info Panel class
 //////////////////////////////////////////
 class InfoPanel extends JPanel { 
-    //DatabasePanel, JLabel objects and JComboBox
+    //DatabasePanel, JLabel objects and button
     private DatabasePanel dbPanel;
     private JLabel idLbl = new JLabel("Id:", JLabel.LEFT);
     private JLabel nameLbl = new JLabel("Name:", JLabel.LEFT);
     private JLabel majorLbl = new JLabel("Major:", JLabel.LEFT);
     private JLabel selectLbl = new JLabel("Choose Selection:", JLabel.LEFT);
-    //TextFields, JCombobox
+    private Button processButton = new Button("Process Request");
+
+    //TextFields, and JCombobox
     private JTextField idText = new JTextField(20);
     private JTextField nameText = new JTextField(20);
     private JTextField majorText = new JTextField(20);
@@ -126,6 +128,7 @@ class InfoPanel extends JPanel {
                     .addComponent(nameLbl)
                     .addComponent(majorLbl)
                     .addComponent(selectLbl)
+                    .addComponent(processButton)
                 )
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                     .addComponent(idText)
@@ -153,10 +156,8 @@ class InfoPanel extends JPanel {
             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
             .addComponent(selectLbl)
             .addComponent(selectBox)
-        )
-        
-        
-
+            )
+            .addComponent(processButton)
         );
     }			
     
