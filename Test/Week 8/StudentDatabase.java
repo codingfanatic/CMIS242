@@ -73,6 +73,7 @@ class DatabasePanel extends JPanel {
 class InfoPanel extends JPanel { 
     //DatabasePanel, JLabel objects and button
     private DatabasePanel dbPanel;
+    private GoodFrame frame = new GoodFrame();
     private JLabel idLbl = new JLabel("Id:", JLabel.LEFT);
     private JLabel nameLbl = new JLabel("Name:", JLabel.LEFT);
     private JLabel majorLbl = new JLabel("Major:", JLabel.LEFT);
@@ -93,6 +94,40 @@ class InfoPanel extends JPanel {
     
     public InfoPanel (DatabasePanel dbPanel) {
        this.dbPanel = dbPanel;
+       processButton.addActionListener(new ActionListener(){
+        public void actionPerformed (ActionEvent e){
+                //Check the input is not a multiple of 20
+                if(selectBox.getSelectedItem().equals("Delete")) {
+                    JOptionPane.showMessageDialog(frame, "AYYYE You very GOOOD!",
+                        "Warning", JOptionPane.ERROR_MESSAGE);
+                }
+/*
+                //Withdraw if the Checking account is selected
+                else if (atmPanel.rbPanel.checkingSelected()){
+                    try {
+                        checkingAccount.withdraw(atmPanel.iPanel.getInput());
+                    }
+                    catch (InsufficientFundsException ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage(),
+                        "Warning", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                //Withdraw if the Savings account is selected
+                else {
+                    try {
+                        savingsAccount.withdraw(atmPanel.iPanel.getInput());
+                    }
+                    catch (InsufficientFundsException ex) {
+                        JOptionPane.showMessageDialog(frame, ex.getMessage(),
+                        "Warning", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            //Reset the input text field    
+            atmPanel.iPanel.resetText();
+*/
+        }
+        });
+       
        /*
        I'll leave this here for the time being.
        inputTxt.addKeyListener(new KeyAdapter() {
