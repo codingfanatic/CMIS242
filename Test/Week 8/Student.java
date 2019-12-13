@@ -4,7 +4,7 @@ public class Student{
     private String name;
     private String major;
     private int creditsCompleted;
-    private int qualityPoints; //Credits * the grade 
+    private double qualityPoints; //Credits * the grade 
 
     //Constructor
     public Student(String name, String major){
@@ -35,8 +35,20 @@ public class Student{
                         qualityPoints = 0; 
                         break;
         }
-
         qualityPoints = points * creditsCompleted;
     }
+
+    public double getQualityPoints(){
+        return this.qualityPoints;
+    }
+
     //ToSTring overridden 
+}
+
+class TestStudent{
+    public static void main(String[] args){
+        Student a = new Student("Rick", "Computah");
+        a.courseCompleted('A', 3);
+        System.out.println(a.getQualityPoints());
+    }
 }
