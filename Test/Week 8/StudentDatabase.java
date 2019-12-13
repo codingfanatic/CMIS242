@@ -97,9 +97,24 @@ class InfoPanel extends JPanel {
        processButton.addActionListener(new ActionListener(){
         public void actionPerformed (ActionEvent e){
                 //Check the input is not a multiple of 20
-                if(selectBox.getSelectedItem().equals("Delete")) {
-                    JOptionPane.showMessageDialog(frame, "AYYYE You very GOOOD!",
-                        "Warning", JOptionPane.ERROR_MESSAGE);
+                if(selectBox.getSelectedItem().equals("Insert")) {
+                    JOptionPane.showMessageDialog(frame, idText.getText() + "\n" + nameText.getText() + "\n" + majorText.getText(),
+                        "Warning", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                else if(selectBox.getSelectedItem().equals("Delete")) {
+                    JOptionPane.showMessageDialog(frame, "Delete selected",
+                        "Warning", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                else if(selectBox.getSelectedItem().equals("Find")) {
+                    JOptionPane.showMessageDialog(frame, "Find selected",
+                        "Warning", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                else if (selectBox.getSelectedItem().equals("Update")) {
+                    JOptionPane.showMessageDialog(frame, "Update selected",
+                        "Warning", JOptionPane.INFORMATION_MESSAGE);
                 }
 /*
                 //Withdraw if the Checking account is selected
