@@ -96,23 +96,52 @@ class InfoPanel extends JPanel {
        this.dbPanel = dbPanel;
        processButton.addActionListener(new ActionListener(){
         public void actionPerformed (ActionEvent e){
-                
+                //Insertion logic
                 if(selectBox.getSelectedItem().equals("Insert")) {
-                    JOptionPane.showMessageDialog(frame, idText.getText() + "\n" + nameText.getText() + "\n" + majorText.getText(),
-                        "Warning", JOptionPane.INFORMATION_MESSAGE);
+                            //Check for previously entered keys in the id field
+                            if (studentMapping.containsKey(Integer.parseInt(idText.getText()))){
+                                JOptionPane.showMessageDialog(
+                                    frame, 
+                                    "The key youe ntered, " + 
+                                        Integer.parseInt(idText.getText()) + ", already exists.",
+                                    "Warning", 
+                                    JOptionPane.INFORMATION_MESSAGE
+                                );
+                            }
+                            //Insert the record
+                            else {
+                                studentMapping.putIfAbsent(
+                                    Integer.parseInt(idText.getText()), 
+                                    nameText.getText() + "," + majorText.getText()
+                                );
+
+                            }
+                    System.out.println(studentMapping);    
+                }
+                
+                //Deletion Logic
+                if(selectBox.getSelectedItem().equals("Delete")) {
+                    //Check for the key and 
+                    if (studentMapping.containsKey(Integer.parseInt(idText.getText())) 
+                        && true){
+                        JOptionPane.showMessageDialog(
+                            frame, 
+                            "The key youe ntered, " + 
+                                Integer.parseInt(idText.getText()) + ", already exists.",
+                            "Warning", 
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+                    //Insert the record
+                    else {
                         studentMapping.putIfAbsent(
                             Integer.parseInt(idText.getText()), 
                             nameText.getText() + "," + majorText.getText()
                         );
-                    
-                System.out.println(studentMapping);    
-                    
-                }
 
-                else if(selectBox.getSelectedItem().equals("Delete")) {
-                    JOptionPane.showMessageDialog(frame, "Delete selected",
-                        "Warning", JOptionPane.INFORMATION_MESSAGE);
-                }
+                    }
+            System.out.println(studentMapping);    
+        }
 
                 else if(selectBox.getSelectedItem().equals("Find")) {
                     JOptionPane.showMessageDialog(frame, "Find selected",
