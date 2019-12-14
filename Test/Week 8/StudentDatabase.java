@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 
 public class StudentDatabase extends GoodFrame{
@@ -80,26 +82,31 @@ class InfoPanel extends JPanel {
     private JLabel selectLbl = new JLabel("Choose Selection:", JLabel.LEFT);
     private Button processButton = new Button("Process Request");
 
-    //TextFields, and JCombobox
+    //TextFields, String array, and JCombobox
     private JTextField idText = new JTextField(20);
     private JTextField nameText = new JTextField(20);
     private JTextField majorText = new JTextField(20);
-
     private String options[] = {"Insert", "Delete", "Find", "Update"};
     private JComboBox selectBox = new JComboBox(options);
 
-    //Might get rid of these
-    //private GoodFrame frame = new GoodFrame();
-    //private JTextField inputTxt = new JTextField(20);
-    
+    //HashMap for storing database information
+    Map<Integer, String> studentMapping = new HashMap<>();
+
     public InfoPanel (DatabasePanel dbPanel) {
        this.dbPanel = dbPanel;
        processButton.addActionListener(new ActionListener(){
         public void actionPerformed (ActionEvent e){
-                //Check the input is not a multiple of 20
+                
                 if(selectBox.getSelectedItem().equals("Insert")) {
                     JOptionPane.showMessageDialog(frame, idText.getText() + "\n" + nameText.getText() + "\n" + majorText.getText(),
                         "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        studentMapping.putIfAbsent(
+                            Integer.parseInt(idText.getText()), 
+                            nameText.getText() + "," + majorText.getText()
+                        );
+                    
+                System.out.println(studentMapping);    
+                    
                 }
 
                 else if(selectBox.getSelectedItem().equals("Delete")) {
