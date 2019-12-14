@@ -96,13 +96,14 @@ class InfoPanel extends JPanel {
        this.dbPanel = dbPanel;
        processButton.addActionListener(new ActionListener(){
         public void actionPerformed (ActionEvent e){
+                
                 //Insertion logic
                 if(selectBox.getSelectedItem().equals("Insert")) {
                             //Check for previously entered keys in the id field
                             if (studentMapping.containsKey(Integer.parseInt(idText.getText()))){
                                 JOptionPane.showMessageDialog(
                                     frame, 
-                                    "The key youe ntered, " + 
+                                    "The key you entered, " + 
                                         Integer.parseInt(idText.getText()) + ", already exists.",
                                     "Warning", 
                                     JOptionPane.INFORMATION_MESSAGE
@@ -114,15 +115,54 @@ class InfoPanel extends JPanel {
                                     Integer.parseInt(idText.getText()), 
                                     new Student(nameText.getText(), majorText.getText())
                                 );
-
+                                JOptionPane.showMessageDialog(
+                                    frame, 
+                                    "Insertion Successful",
+                                    "Success", 
+                                    JOptionPane.INFORMATION_MESSAGE
+                                ); 
                             }
                     System.out.println(studentMapping);    
                 }
                 
                 //Deletion Logic
-                if(selectBox.getSelectedItem().equals("Delete")) {
+                else if(selectBox.getSelectedItem().equals("Delete")) {
+                    //Warning if the key or Student do not exist
+                    if (!studentMapping.containsKey(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                    ||
+                    (!studentMapping.get(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                        .getName()
+                        .equals(
+                            nameText.getText()
+                        )
+                    )
+                    ||
+                    (!studentMapping.get(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                        .getMajor()
+                        .equals(
+                            majorText.getText()
+                        )
+                    ))
+                    {
+                        JOptionPane.showMessageDialog(
+                                frame, 
+                                "The record you entered does not exist",
+                                "Warning", 
+                                JOptionPane.INFORMATION_MESSAGE
+                        );
+                        System.out.println(studentMapping);  
+                    }
                     //Confirm the key, name, and major are stored in the HashMap
-                    if (studentMapping.containsKey(
+                    else if (studentMapping.containsKey(
                             Integer.parseInt(
                                 idText.getText()
                             )
@@ -149,10 +189,16 @@ class InfoPanel extends JPanel {
                             )
                         ))
                     {
-                            JOptionPane.showMessageDialog(frame, 
-                                "CHILLLLLL",
-                                "Warning", 
-                                JOptionPane.INFORMATION_MESSAGE
+                            System.out.println(studentMapping);
+                            studentMapping.remove(
+                                Integer.parseInt(
+                                    idText.getText()
+                                ),
+                                studentMapping.get(
+                                    Integer.parseInt(
+                                        idText.getText()
+                                    )
+                                )
                             );
                             System.out.println(studentMapping);    
                     }
