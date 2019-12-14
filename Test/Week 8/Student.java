@@ -17,6 +17,7 @@ public class Student{
     //CourseCompleted method
     public void courseCompleted(char grade, int creditsCompleted){
         int points = 0;
+        this.creditsCompleted = creditsCompleted;
 
         switch(grade){
             case('A'):  points = 4;
@@ -42,13 +43,24 @@ public class Student{
         return this.qualityPoints;
     }
 
-    //ToSTring overridden 
+    @Override
+    public String toString(){
+        double points = 0;
+            if (creditsCompleted == 0){
+                points = 4;
+            }
+            else{
+                points = getQualityPoints() / creditsCompleted;
+            }
+        return name + "\n" + major + "\n" + points;
+    }
 }
 
 class TestStudent{
     public static void main(String[] args){
         Student a = new Student("Rick", "Computah");
-        a.courseCompleted('A', 3);
+        //a.courseCompleted('D', 3);
         System.out.println(a.getQualityPoints());
+        System.out.println(a.toString());
     }
 }
