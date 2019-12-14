@@ -90,7 +90,7 @@ class InfoPanel extends JPanel {
     private JComboBox selectBox = new JComboBox(options);
 
     //HashMap for storing database information
-    Map<Integer, String> studentMapping = new HashMap<>();
+    Map<Integer, Student> studentMapping = new HashMap<>();
 
     public InfoPanel (DatabasePanel dbPanel) {
        this.dbPanel = dbPanel;
@@ -108,11 +108,11 @@ class InfoPanel extends JPanel {
                                     JOptionPane.INFORMATION_MESSAGE
                                 );
                             }
-                            //Insert the record
+                            //Instantiate a Student object and insert the record
                             else {
                                 studentMapping.putIfAbsent(
                                     Integer.parseInt(idText.getText()), 
-                                    nameText.getText() + "," + majorText.getText()
+                                    new Student(nameText.getText(), majorText.getText())
                                 );
 
                             }
@@ -121,17 +121,45 @@ class InfoPanel extends JPanel {
                 
                 //Deletion Logic
                 if(selectBox.getSelectedItem().equals("Delete")) {
-                    //Check for the key and 
-                    if (studentMapping.containsKey(Integer.parseInt(idText.getText())) 
-                        && true){
-                        JOptionPane.showMessageDialog(
-                            frame, 
-                            "The key youe ntered, " + 
-                                Integer.parseInt(idText.getText()) + ", already exists.",
-                            "Warning", 
-                            JOptionPane.INFORMATION_MESSAGE
-                        );
+                    //Confirm the key, name, and major are stored in the HashMap
+                    if (studentMapping.containsKey(
+                            Integer.parseInt(
+                                idText.getText()
+                            )
+                        )
+                        &&
+                        (studentMapping.get(
+                            Integer.parseInt(
+                                idText.getText()
+                            ))
+                            .getName()
+                            .equals(
+                                nameText.getText()
+                            )
+                        )
+
+                        &&
+                        (studentMapping.get(
+                            Integer.parseInt(
+                                idText.getText()
+                            ))
+                            .getMajor()
+                            .equals(
+                                majorText.getText()
+                            )
+                        ))
+                    {
+                            JOptionPane.showMessageDialog(frame, 
+                                "CHILLLLLL",
+                                "Warning", 
+                                JOptionPane.INFORMATION_MESSAGE
+                            );
+                            System.out.println(studentMapping);    
                     }
+                }
+
+
+/*
                     //Insert the record
                     else {
                         studentMapping.putIfAbsent(
@@ -141,7 +169,7 @@ class InfoPanel extends JPanel {
 
                     }
             System.out.println(studentMapping);    
-        }
+        */
 
                 else if(selectBox.getSelectedItem().equals("Find")) {
                     JOptionPane.showMessageDialog(frame, "Find selected",

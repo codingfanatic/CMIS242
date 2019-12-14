@@ -43,6 +43,15 @@ public class Student{
         return this.qualityPoints;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+
+    public String getMajor(){
+        return this.major;
+    }
+
     @Override
     public String toString(){
         double points = 0;
@@ -52,7 +61,7 @@ public class Student{
             else{
                 points = getQualityPoints() / creditsCompleted;
             }
-        return name + "\n" + major + "\n" + points;
+        return name + ", " + major + ", " + points;
     }
 }
 
