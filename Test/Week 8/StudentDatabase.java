@@ -189,6 +189,7 @@ class InfoPanel extends JPanel {
                             )
                         ))
                     {
+                            //Delete the record
                             System.out.println(studentMapping);
                             studentMapping.remove(
                                 Integer.parseInt(
@@ -200,26 +201,98 @@ class InfoPanel extends JPanel {
                                     )
                                 )
                             );
+                            JOptionPane.showMessageDialog(
+                                frame, 
+                                "Deletion Successful",
+                                "Success", 
+                                JOptionPane.INFORMATION_MESSAGE
+                            ); 
                             System.out.println(studentMapping);    
                     }
                 }
-
-
-/*
-                    //Insert the record
-                    else {
-                        studentMapping.putIfAbsent(
-                            Integer.parseInt(idText.getText()), 
-                            nameText.getText() + "," + majorText.getText()
-                        );
-
-                    }
-            System.out.println(studentMapping);    
-        */
-
+                
+                //Find logic
                 else if(selectBox.getSelectedItem().equals("Find")) {
-                    JOptionPane.showMessageDialog(frame, "Find selected",
-                        "Warning", JOptionPane.INFORMATION_MESSAGE);
+                    //Warning if the key or Student do not exist
+                    if (!studentMapping.containsKey(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                    ||
+                    (!studentMapping.get(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                        .getName()
+                        .equals(
+                            nameText.getText()
+                        )
+                    )
+                    ||
+                    (!studentMapping.get(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                        .getMajor()
+                        .equals(
+                            majorText.getText()
+                        )
+                    ))
+                    {
+                        JOptionPane.showMessageDialog(
+                                frame, 
+                                "The record you entered does not exist",
+                                "Warning", 
+                                JOptionPane.INFORMATION_MESSAGE
+                        );
+                        System.out.println(studentMapping);  
+                    }
+                    //Confirm the key, name, and major are stored in the HashMap
+                    else if (studentMapping.containsKey(
+                            Integer.parseInt(
+                                idText.getText()
+                            )
+                        )
+                        &&
+                        (studentMapping.get(
+                            Integer.parseInt(
+                                idText.getText()
+                            ))
+                            .getName()
+                            .equals(
+                                nameText.getText()
+                            )
+                        )
+
+                        &&
+                        (studentMapping.get(
+                            Integer.parseInt(
+                                idText.getText()
+                            ))
+                            .getMajor()
+                            .equals(
+                                majorText.getText()
+                            )
+                        ))
+                    {
+                            //Display the record
+                            System.out.println(studentMapping);
+                            JOptionPane.showMessageDialog(
+                                frame, 
+                                idText.getText() + "\n" +
+                                studentMapping.get(
+                                    Integer.parseInt(
+                                        idText.getText()
+                                    )
+                                )
+                                .toString(),
+                                "Success", 
+                                JOptionPane.INFORMATION_MESSAGE
+                            ); 
+                            System.out.println(studentMapping); 
+                    }
+
+                    
                 }
 
                 else if (selectBox.getSelectedItem().equals("Update")) {

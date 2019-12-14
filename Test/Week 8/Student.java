@@ -61,7 +61,7 @@ public class Student{
             else{
                 points = getQualityPoints() / creditsCompleted;
             }
-        return name + ", " + major + ", " + points;
+        return name + "\n" + major + "\n" + points;
     }
 }
 
