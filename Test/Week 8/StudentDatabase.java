@@ -87,6 +87,10 @@ class InfoPanel extends JPanel {
     private JTextField nameText = new JTextField(20);
     private JTextField majorText = new JTextField(20);
     private String options[] = {"Insert", "Delete", "Find", "Update"};
+    private String chooseGrade[] = {"A", "B", "C", "D", "F"};
+    private String chooseCredits[] = {"3", "6"};
+    private Object gradeSelection;
+    private Object creditSelection;
     private JComboBox selectBox = new JComboBox(options);
 
     //HashMap for storing database information
@@ -94,6 +98,8 @@ class InfoPanel extends JPanel {
 
     public InfoPanel (DatabasePanel dbPanel) {
        this.dbPanel = dbPanel;
+       setBackground(Color.lightGray);
+       
        processButton.addActionListener(new ActionListener(){
         public void actionPerformed (ActionEvent e){
                 
@@ -296,9 +302,57 @@ class InfoPanel extends JPanel {
                 }
 
                 else if (selectBox.getSelectedItem().equals("Update")) {
-                    JOptionPane.showMessageDialog(frame, "Update selected",
-                        "Warning", JOptionPane.INFORMATION_MESSAGE);
+                    //Warning if the key or Student do not exist
+                    if (!studentMapping.containsKey(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                    ||
+                    (!studentMapping.get(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                        .getName()
+                        .equals(
+                            nameText.getText()
+                        )
+                    )
+                    ||
+                    (!studentMapping.get(
+                        Integer.parseInt(
+                            idText.getText()
+                        ))
+                        .getMajor()
+                        .equals(
+                            majorText.getText()
+                        )
+                    ))
+                    {
+                        JOptionPane.showMessageDialog(
+                                frame, 
+                                "The record you entered does not exist",
+                                "Warning", 
+                                JOptionPane.INFORMATION_MESSAGE
+                        );
+                        System.out.println(studentMapping);  
+                    }
+                    //Update logic
+                    else {
+                        gradeSelection = (String) JOptionPane.showInputDialog(
+                            null, 
+                            "",
+                            "Choose grade:", 
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            chooseGrade,
+                            chooseGrade[0]
+                        );
+                    }
+                    System.out.println(gradeSelection);
+
                 }
+
+
 /*
                 //Withdraw if the Checking account is selected
                 else if (atmPanel.rbPanel.checkingSelected()){
