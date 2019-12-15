@@ -61,7 +61,7 @@ public class Student{
             else{
                 points = getQualityPoints() / creditsCompleted;
             }
-        return name + "\n" + major + "\n" + points;
+        return "Name: " + name + "\n" + "Major: " + major + "\n" + "GPA: " + points + "\nQuality Points: " + this.qualityPoints;
     }
 }
 

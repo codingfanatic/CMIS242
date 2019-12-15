@@ -13,9 +13,6 @@ public class StudentDatabase extends GoodFrame{
     public static void main (String[] args){
         StudentDatabase sdb = new StudentDatabase();
         sdb.display();
-       
-        //TestAccount acc = new TestAccount(50);
-        //System.out.println(acc.getBalance());
     }
 }
 
@@ -50,27 +47,18 @@ class GoodFrame extends JFrame {
 //Database Panel class for displaying the Panel
 //////////////////////////////////////////
 class DatabasePanel extends JPanel {
-    //Instantiate the Button, Input, and RadioButton Panels
-    //public ButtonPanel btnPanel = new ButtonPanel(this);
+    //Instantiate the InfoPanel object
     public InfoPanel iPanel = new InfoPanel(this);
-    //public RadioButtonPanel rbPanel = new RadioButtonPanel(this);
 
     public DatabasePanel(){
         setLayout(new FlowLayout());
         setBackground(Color.lightGray);
-        //add(btnPanel, BorderLayout.PAGE_START);
         add(iPanel, FlowLayout.LEFT);
-        //add(rbPanel, BorderLayout.EAST);
     }
 }
 
-//Add the different panels below
-//StudentInfo
-//Selection
-//Process Request
-
 //////////////////////////////////////////
-//Info Panel class
+//Info Panel class for displaying the Info Panel
 //////////////////////////////////////////
 class InfoPanel extends JPanel { 
     //DatabasePanel, JLabel objects and button
@@ -82,7 +70,7 @@ class InfoPanel extends JPanel {
     private JLabel selectLbl = new JLabel("Choose Selection:", JLabel.LEFT);
     private Button processButton = new Button("Process Request");
 
-    //TextFields, String array, and JCombobox
+    //TextFields, String arrays, and JCombobox
     private JTextField idText = new JTextField(20);
     private JTextField nameText = new JTextField(20);
     private JTextField majorText = new JTextField(20);
@@ -347,57 +335,44 @@ class InfoPanel extends JPanel {
                             chooseGrade,
                             chooseGrade[0]
                         );
+                        creditSelection = (String) JOptionPane.showInputDialog(
+                            null, 
+                            "",
+                            "Choose hours:", 
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            chooseCredits,
+                            chooseCredits[0]
+                        );
+
+                        studentMapping.get(
+                            Integer.parseInt(
+                                idText.getText()
+                            )
+                        )
+                        .courseCompleted(
+                            gradeSelection
+                                .toString()
+                                .charAt(0), 
+                            Integer.parseInt(creditSelection.toString())
+                        );
+                        
+                        
                     }
-                    System.out.println(gradeSelection);
+                    JOptionPane.showMessageDialog(
+                        frame, 
+                        "Update Successful",
+                        "Success", 
+                        JOptionPane.INFORMATION_MESSAGE
+                    );
 
                 }
 
 
-/*
-                //Withdraw if the Checking account is selected
-                else if (atmPanel.rbPanel.checkingSelected()){
-                    try {
-                        checkingAccount.withdraw(atmPanel.iPanel.getInput());
-                    }
-                    catch (InsufficientFundsException ex) {
-                        JOptionPane.showMessageDialog(frame, ex.getMessage(),
-                        "Warning", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-                //Withdraw if the Savings account is selected
-                else {
-                    try {
-                        savingsAccount.withdraw(atmPanel.iPanel.getInput());
-                    }
-                    catch (InsufficientFundsException ex) {
-                        JOptionPane.showMessageDialog(frame, ex.getMessage(),
-                        "Warning", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            //Reset the input text field    
-            atmPanel.iPanel.resetText();
-*/
+
         }
         });
        
-       /*
-       I'll leave this here for the time being.
-       inputTxt.addKeyListener(new KeyAdapter() {
-          @Override
-          //Prevent users from entering non-numeric or non-backspace characters
-          public void keyPressed(KeyEvent e) {
-              char keyAsciiValue = e.getKeyChar();
-              if(keyAsciiValue >= (int)'0' && keyAsciiValue <= (int)'9' || keyAsciiValue == 8){
-                  inputTxt.setEditable(true);
-              }
-              else{
-                JOptionPane.showMessageDialog(frame, "Please enter numbers only!",
-                "Warning", JOptionPane.ERROR_MESSAGE);
-                inputTxt.setText("");
-              }
-          }
-       });
-        */
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -447,15 +422,4 @@ class InfoPanel extends JPanel {
             .addComponent(processButton)
         );
     }			
-    
-    //Return the amount entered by the user
-    double getInput() {
-        return 5.0;//Double.parseDouble(inputTxt.getText());
-     } 
-     
-    //Reset the text field after each transaction
-    void resetText(){
-       //inputTxt.setText("");
-       //inputTxt.setEditable(true);
-    }
 }
