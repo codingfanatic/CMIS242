@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.lang.model.util.ElementScanner6;
 import javax.swing.*;
 
 public class StudentDatabase extends GoodFrame{
@@ -91,14 +93,17 @@ class InfoPanel extends JPanel {
        processButton.addActionListener(new ActionListener(){
         public void actionPerformed (ActionEvent e){
                 
-                //Insertion logic
+//////////////////////////////////////////
+//Insert option logic
+//////////////////////////////////////////
+
                 if(selectBox.getSelectedItem().equals("Insert")) {
-                            //Check for previously entered keys in the id field
-                            if (studentMapping.containsKey(Integer.parseInt(idText.getText()))){
+                            //If this key is not available, warn the user
+                            if (!keyAvailable(studentMapping, idText.getText())){
                                 JOptionPane.showMessageDialog(
                                     frame, 
                                     "The key you entered, " + 
-                                        Integer.parseInt(idText.getText()) + ", already exists.",
+                                    Integer.parseInt(idText.getText()) + ", already exists.",
                                     "Warning", 
                                     JOptionPane.INFORMATION_MESSAGE
                                 );
@@ -116,36 +121,20 @@ class InfoPanel extends JPanel {
                                     JOptionPane.INFORMATION_MESSAGE
                                 ); 
                             }
-                    System.out.println(studentMapping);    
                 }
                 
-                //Deletion Logic
+//////////////////////////////////////////
+//Delete option logic
+//////////////////////////////////////////
                 else if(selectBox.getSelectedItem().equals("Delete")) {
                     //Warning if the key or Student do not exist
-                    if (!studentMapping.containsKey(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                    ||
-                    (!studentMapping.get(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                        .getName()
-                        .equals(
-                            nameText.getText()
-                        )
-                    )
-                    ||
-                    (!studentMapping.get(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                        .getMajor()
-                        .equals(
+                    if (!recordExists(
+                            studentMapping, 
+                            idText.getText(), 
+                            nameText.getText(), 
                             majorText.getText()
                         )
-                    ))
+                    )                       
                     {
                         JOptionPane.showMessageDialog(
                                 frame, 
@@ -155,35 +144,9 @@ class InfoPanel extends JPanel {
                         );
                         System.out.println(studentMapping);  
                     }
-                    //Confirm the key, name, and major are stored in the HashMap
-                    else if (studentMapping.containsKey(
-                            Integer.parseInt(
-                                idText.getText()
-                            )
-                        )
-                        &&
-                        (studentMapping.get(
-                            Integer.parseInt(
-                                idText.getText()
-                            ))
-                            .getName()
-                            .equals(
-                                nameText.getText()
-                            )
-                        )
-
-                        &&
-                        (studentMapping.get(
-                            Integer.parseInt(
-                                idText.getText()
-                            ))
-                            .getMajor()
-                            .equals(
-                                majorText.getText()
-                            )
-                        ))
-                    {
-                            //Delete the record
+                    
+                    //Delete the record
+                    else {
                             System.out.println(studentMapping);
                             studentMapping.remove(
                                 Integer.parseInt(
@@ -421,5 +384,43 @@ class InfoPanel extends JPanel {
             )
             .addComponent(processButton)
         );
-    }			
+    }
+    
+    public boolean keyAvailable(Map<Integer, Student> m, String key){
+        if(!m.containsKey(Integer.parseInt(key))){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean recordExists(Map<Integer, Student> m, String key, String name, String major){
+        if( //Hashmap contains the key
+            m.containsKey(
+                Integer.parseInt(
+                    key
+                )
+            )
+            &&//Record at key does have the same name
+            (m.get(
+                Integer.parseInt(
+                    key
+                ))
+                .getName()
+                .equals(name)
+            )
+            &&//Record at key does have the same major
+            (m.get(
+                Integer.parseInt(
+                    key
+                ))
+                .getMajor()
+                .equals(major)
+            )
+        ){
+            return true;
+        }
+        else
+            return false;
+    }
 }
