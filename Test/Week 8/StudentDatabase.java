@@ -1,3 +1,12 @@
+/*
+StudentDatabase.java
+Richard Clarke
+12-13-19
+A class used to instantiate a database for Student records. It should prompt the user to 
+Insert, Find, Delete, or Update records. They will be stored as a HashMap with the Student
+objects being defined in a separate class, Student.java.
+*/
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
@@ -142,9 +151,8 @@ class InfoPanel extends JPanel {
                                 "Warning", 
                                 JOptionPane.INFORMATION_MESSAGE
                         );
-                        System.out.println(studentMapping);  
                     }
-                    
+
                     //Delete the record
                     else {
                             System.out.println(studentMapping);
@@ -168,124 +176,62 @@ class InfoPanel extends JPanel {
                     }
                 }
                 
-                //Find logic
+//////////////////////////////////////////
+//Find option logic
+//////////////////////////////////////////
                 else if(selectBox.getSelectedItem().equals("Find")) {
                     //Warning if the key or Student do not exist
-                    if (!studentMapping.containsKey(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                    ||
-                    (!studentMapping.get(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                        .getName()
-                        .equals(
-                            nameText.getText()
+                    if (!recordExists(
+                        studentMapping, 
+                        idText.getText(), 
+                        nameText.getText(), 
+                        majorText.getText()
                         )
-                    )
-                    ||
-                    (!studentMapping.get(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                        .getMajor()
-                        .equals(
-                            majorText.getText()
-                        )
-                    ))
+                    )                       
                     {
                         JOptionPane.showMessageDialog(
-                                frame, 
-                                "The record you entered does not exist",
-                                "Warning", 
-                                JOptionPane.INFORMATION_MESSAGE
+                            frame, 
+                            "The record you entered does not exist",
+                            "Warning", 
+                            JOptionPane.INFORMATION_MESSAGE
                         );
-                        System.out.println(studentMapping);  
                     }
-                    //Confirm the key, name, and major are stored in the HashMap
-                    else if (studentMapping.containsKey(
-                            Integer.parseInt(
-                                idText.getText()
-                            )
-                        )
-                        &&
-                        (studentMapping.get(
-                            Integer.parseInt(
-                                idText.getText()
-                            ))
-                            .getName()
-                            .equals(
-                                nameText.getText()
-                            )
-                        )
-
-                        &&
-                        (studentMapping.get(
-                            Integer.parseInt(
-                                idText.getText()
-                            ))
-                            .getMajor()
-                            .equals(
-                                majorText.getText()
-                            )
-                        ))
                     {
-                            //Display the record
-                            System.out.println(studentMapping);
-                            JOptionPane.showMessageDialog(
-                                frame, 
-                                idText.getText() + "\n" +
-                                studentMapping.get(
-                                    Integer.parseInt(
-                                        idText.getText()
-                                    )
+                        //Display the record
+                        JOptionPane.showMessageDialog(
+                            frame, 
+                            idText.getText() + "\n" +
+                            studentMapping.get(
+                                Integer.parseInt(
+                                    idText.getText()
                                 )
-                                .toString(),
-                                "Success", 
-                                JOptionPane.INFORMATION_MESSAGE
-                            ); 
-                            System.out.println(studentMapping); 
+                            )
+                            .toString(),
+                            "Success", 
+                            JOptionPane.INFORMATION_MESSAGE
+                        ); 
                     }
-
-                    
                 }
 
+//////////////////////////////////////////
+//Find option logic
+//////////////////////////////////////////
                 else if (selectBox.getSelectedItem().equals("Update")) {
                     //Warning if the key or Student do not exist
-                    if (!studentMapping.containsKey(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                    ||
-                    (!studentMapping.get(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                        .getName()
-                        .equals(
-                            nameText.getText()
+                    if (!recordExists(
+                        studentMapping, 
+                        idText.getText(), 
+                        nameText.getText(), 
+                        majorText.getText()
                         )
-                    )
-                    ||
-                    (!studentMapping.get(
-                        Integer.parseInt(
-                            idText.getText()
-                        ))
-                        .getMajor()
-                        .equals(
-                            majorText.getText()
-                        )
-                    ))
+                    )                       
                     {
                         JOptionPane.showMessageDialog(
-                                frame, 
-                                "The record you entered does not exist",
-                                "Warning", 
-                                JOptionPane.INFORMATION_MESSAGE
+                            frame, 
+                            "The record you entered does not exist",
+                            "Warning", 
+                            JOptionPane.INFORMATION_MESSAGE
                         );
-                        System.out.println(studentMapping);  
                     }
                     //Update logic
                     else {
@@ -308,6 +254,7 @@ class InfoPanel extends JPanel {
                             chooseCredits[0]
                         );
 
+                        //Invoke the courseCompleted() method using the user selections
                         studentMapping.get(
                             Integer.parseInt(
                                 idText.getText()
@@ -319,8 +266,6 @@ class InfoPanel extends JPanel {
                                 .charAt(0), 
                             Integer.parseInt(creditSelection.toString())
                         );
-                        
-                        
                     }
                     JOptionPane.showMessageDialog(
                         frame, 
@@ -328,11 +273,7 @@ class InfoPanel extends JPanel {
                         "Success", 
                         JOptionPane.INFORMATION_MESSAGE
                     );
-
                 }
-
-
-
         }
         });
        

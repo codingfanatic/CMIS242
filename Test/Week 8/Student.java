@@ -1,3 +1,13 @@
+/*
+StudentDatabase.java
+Richard Clarke
+12-13-19
+A class used to define Student objects for the StudentDatabase class. Students have a name, 
+makor, number of credits completed, and quality points. Upon selecting Update in the StudentDatabase
+class, the courseCompleted() method should be invoked calculating the GPA and Quality Points for a 
+Student.
+*/
+
 import java.util.function.ToDoubleBiFunction;
 
 public class Student{
@@ -62,14 +72,5 @@ public class Student{
                 points = getQualityPoints() / creditsCompleted;
             }
         return "Name: " + name + "\n" + "Major: " + major + "\n" + "GPA: " + points + "\nQuality Points: " + this.qualityPoints;
-    }
-}
-
-class TestStudent{
-    public static void main(String[] args){
-        Student a = new Student("Rick", "Computah");
-        //a.courseCompleted('D', 3);
-        System.out.println(a.getQualityPoints());
-        System.out.println(a.toString());
     }
 }
